@@ -3,6 +3,7 @@ package com.myshop.testcases;
 import org.junit.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -20,7 +21,7 @@ public class logintestcase extends BaseClass{
 	
 	@Parameters("browser")
 	@BeforeMethod(groups = {"Smoke","Sanity","Regression"})
-	public void setup(String browser) {
+	public void setup(@Optional("Chrome") String browser) {
 		launchApp(browser); 
 	}
 	
@@ -38,7 +39,8 @@ public class logintestcase extends BaseClass{
 	    //homePage=loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 		homePage=loginPage.login(uname,pswd,homePage);
 	    String actualURL=homePage.getCurrURL();
-	    String expectedURL="http://automationpractice.com/index.php?controller=my-account";
+	    System.out.println(homePage.getCurrURL());
+	    String expectedURL="http://www.automationpractice.pl/index.php?controller=authentication";
 	    LogUtility.info("Verifying if user is able to login");
 	    Assert.assertEquals(actualURL, expectedURL);
 	    LogUtility.info("Login is Sucess");

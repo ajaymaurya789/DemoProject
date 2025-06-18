@@ -3,9 +3,8 @@ package com.myshop.basepackage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -66,13 +65,11 @@ public class BaseClass {
 		//Delete all the cookies
 		getDriver().manage().deleteAllCookies();
 		//Implicit TimeOuts
-		getDriver().manage().timeouts().implicitlyWait
-		(Integer.parseInt(prop.getProperty("implicitWait")),TimeUnit.SECONDS);
-		//PageLoad TimeOuts
-		getDriver().manage().timeouts().pageLoadTimeout
-		(Integer.parseInt(prop.getProperty("pageLoadTimeOut")),TimeUnit.SECONDS);
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
 		//Launching the URL
-		getDriver().get(prop.getProperty("url"));
+		getDriver().get("http://www.automationpractice.pl/index.php");
 	}
 
 	@AfterSuite(groups = { "Smoke", "Regression","Sanity" })

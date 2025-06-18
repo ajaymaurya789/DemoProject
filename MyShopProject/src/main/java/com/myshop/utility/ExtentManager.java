@@ -11,13 +11,13 @@ public class ExtentManager {
 	
 	public static void setExtent() throws Exception {
 		//htmlReporter= new ExtentHtmlReporter(System.getProperty("user.dir")+"/test-output/ExtentReport/"+"MyReport_"+BaseClass.getCurrentTime()+".html");
-		htmlReporter= new ExtentSparkReporter(System.getProperty("user.dir")+"/test-output/ExtentReport/"+"MyReport.html");
+		ExtentSparkReporter htmlReporter= new ExtentSparkReporter(System.getProperty("user.dir")+"/test-output/ExtentReport"+"MyReport.html");
 		htmlReporter.loadXMLConfig(System.getProperty("user.dir")+"/extent-config.xml");
 		//htmlReporter.config().setDocumentTitle("Automation Test Report");
 		//htmlReporter.config().setReportName("OrangeHRM Test Automation Report");
 		//htmlReporter.config().setTheme(Theme.DARK);
 		
-		extent = new ExtentReports();
+		ExtentReports extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 		
 		extent.setSystemInfo("HostName", "MyHost");

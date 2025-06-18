@@ -2,6 +2,7 @@ package com.myshop.testcases;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,7 @@ private Indexpage indexPage;
     
 	@Parameters("browser")
 	@BeforeMethod(groups = {"Smoke","Sanity","Regression"})
-	public void setup(String browser) {
+	public void setup(@Optional("Chrome") String browser) {
 		launchApp(browser); 
 	}
 	
@@ -37,7 +38,7 @@ private Indexpage indexPage;
 	public void verifyTitle() {
 		LogUtility.startTestCase("verifyTitle");
 		String actTitle=indexPage.validatetitle();
-		Assert.assertEquals(actTitle, "My Store1");
+		Assert.assertEquals(actTitle, "My Shop");
 		LogUtility.endTestCase("verifyTitle");
 	}
 

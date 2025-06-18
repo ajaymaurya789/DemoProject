@@ -12,7 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class NewExcelLibrary {
-	public static String path = System.getProperty("user.dir") + "src\\test\\resources\\TestData\\TestData1.xlsx";
+	public static String path = System.getProperty("user.dir") + "\\src\\test\\resources\\TestData\\TestData1.xlsx";
 
 //	public  String path;
 	public FileInputStream fis = null;

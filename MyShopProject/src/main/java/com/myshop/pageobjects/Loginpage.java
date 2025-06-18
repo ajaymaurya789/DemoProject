@@ -20,7 +20,8 @@ public class Loginpage extends BaseClass {
 		Username.sendKeys(uname);
 		Password.sendKeys(pass);
 		SigninButton.click();
-		return new Homepage();
+		homepage = new Homepage();
+		return homepage;
 	}
 	
 
@@ -30,7 +31,7 @@ public class Loginpage extends BaseClass {
 		Password.sendKeys(pass);
 		SigninButton.click();
 		addresspage=new AddressPage();
-		return new AddressPage();
+		return addresspage;
 	}
 	public AccountCreationPage CreateNewAcc(String newemail) {
 		EmailforNewAcc.sendKeys(newemail);
