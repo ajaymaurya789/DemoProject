@@ -148,7 +148,7 @@
         <version>3.5.3</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>saucedemotesting.xml</suiteXmlFile>
+            <suiteXmlFile>MyShopProject\testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>

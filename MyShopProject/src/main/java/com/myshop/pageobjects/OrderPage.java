@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.myshop.basepackage.BaseClass;
 
 public class OrderPage extends BaseClass {
-	@FindBy(xpath="//td[@class='cart_unit']/span/span")
+	@FindBy(xpath="//li[@class='price special-price']")
 	private WebElement unitPrice;
 	
 	@FindBy(id="total_price")
@@ -23,14 +23,14 @@ public class OrderPage extends BaseClass {
 		String unitPrice1=unitPrice.getText();
 		String unit=unitPrice1.replaceAll("[^a-zA-Z0-9]","");
 		double finalUnitPrice=Double.parseDouble(unit);
-		return finalUnitPrice/100;
+		return finalUnitPrice;
 	}
 	
 	public double getTotalPrice() {
 		String totalPrice1=totalPrice.getText();
 		String tot=totalPrice1.replaceAll("[^a-zA-Z0-9]","");
 		double finalTotalPrice=Double.parseDouble(tot);
-		return finalTotalPrice/100;
+		return finalTotalPrice;
 	}
 	
 	public Loginpage clickOnCheckOut(){

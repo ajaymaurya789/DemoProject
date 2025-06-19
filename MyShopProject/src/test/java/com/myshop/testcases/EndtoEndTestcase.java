@@ -3,6 +3,7 @@ package com.myshop.testcases;
 import org.junit.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -34,7 +35,7 @@ public class EndtoEndTestcase extends BaseClass {
 
 	@Parameters("browser")
 	@BeforeMethod(groups = {"Smoke","Sanity","Regression"})
-	public void setup(String browser) {
+	public void setup(@Optional ("Chrome") String browser) {
 		launchApp(browser); 
 	}
 	
@@ -49,8 +50,9 @@ public class EndtoEndTestcase extends BaseClass {
 		index= new Indexpage();
 		searchResultPage=index.searchproduct(productName);
 		addToCartPage=searchResultPage.clickonproduct();
-		addToCartPage.enterquantity(qty);
 		addToCartPage.entersize(size);
+		addToCartPage.enterquantity(qty);
+		addToCartPage.addtocart();
 		addToCartPage.validateaddtocart();
 		orderPage=addToCartPage.proceedtocheckout();
 		loginPage=orderPage.clickOnCheckOut();
@@ -61,7 +63,7 @@ public class EndtoEndTestcase extends BaseClass {
 		orderSummary=paymentPage.clickOnPaymentMethod();
 		orderConfirmationPage=orderSummary.clickOnconfirmOrderBtn();
 		String actualMessage=orderConfirmationPage.validateConfirmMessage();
-		String expectedMsg="Your order on My Store is complete.";
+		String expectedMsg="Your order on My Shop is complete.";
 		Assert.assertEquals(actualMessage, expectedMsg);
 		LogUtility.endTestCase("endToEndTest");
 	}

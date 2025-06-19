@@ -36,8 +36,9 @@ public class AddtoCartTestcase extends BaseClass {
 		index= new Indexpage();
 		searchResultPage=index.searchproduct(productName);
 		addToCartPage=searchResultPage.clickonproduct();
-		addToCartPage.enterquantity(qty);
 		addToCartPage.entersize(size);
+		addToCartPage.enterquantity(qty);
+		addToCartPage.addtocart();
 		addToCartPage.validateaddtocart();
 		boolean result=addToCartPage.validateaddtocart();
 		Assert.assertTrue(result);

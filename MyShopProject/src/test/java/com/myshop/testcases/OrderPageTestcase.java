@@ -3,6 +3,7 @@ package com.myshop.testcases;
 import org.junit.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -22,7 +23,7 @@ public class OrderPageTestcase extends BaseClass {
 
 	@Parameters("browser")
 	@BeforeMethod(groups = {"Smoke","Sanity","Regression"})
-	public void setup(String browser) {
+	public void setup(@Optional("Chrome") String browser) {
 		launchApp(browser); 
 	}
 	
@@ -39,11 +40,12 @@ public class OrderPageTestcase extends BaseClass {
 		addToCartPage=searchResultPage.clickonproduct();
 		addToCartPage.enterquantity(qty);
 		addToCartPage.entersize(size);
+		addToCartPage.addtocart();
 		addToCartPage.validateaddtocart();
 		orderPage=addToCartPage.proceedtocheckout();
 		Double unitPrice=orderPage.getUnitPrice();
 		Double totalPrice=orderPage.getTotalPrice();
-		Double totalExpectedPrice=(unitPrice*(Double.parseDouble(qty)))+2;
+		Double totalExpectedPrice=(unitPrice*(Double.parseDouble(qty)))+7;
 		Assert.assertEquals(totalPrice, totalExpectedPrice);
 		LogUtility.endTestCase("verifyTotalPrice");
 	}

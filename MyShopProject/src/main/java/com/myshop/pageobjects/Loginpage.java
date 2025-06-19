@@ -35,6 +35,7 @@ public class Loginpage extends BaseClass {
 	}
 	public AccountCreationPage CreateNewAcc(String newemail) {
 		EmailforNewAcc.sendKeys(newemail);
+		CreateNewAccbtn.click();
 		return new AccountCreationPage();
 		
 	}

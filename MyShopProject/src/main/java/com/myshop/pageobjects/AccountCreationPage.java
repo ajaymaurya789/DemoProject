@@ -11,10 +11,10 @@ public class AccountCreationPage extends BaseClass {
 	
 
 	
-	@FindBy(xpath = "//h1[text()='Create an account']")
+	@FindBy(xpath = "//h1[@class='page-heading']")
 	private WebElement formTitle;
 	
-	@FindBy(id = "uniform-id_gender1")
+	@FindBy(id = "id_gender1")
 	private WebElement mr;
 	
 	@FindBy(id = "id_gender2")
@@ -38,38 +38,39 @@ public class AccountCreationPage extends BaseClass {
 	@FindBy(name = "years")
 	private WebElement years;
 
-	@FindBy(name = "firstname")
-	private WebElement customerNirstName;
+	//@FindBy(name = "firstname")
+	//private WebElement customerNirstName;
 
-	@FindBy(name = "lastname")
-	private WebElement customerLastName;
+	//@FindBy(name = "lastname")
+	//private WebElement customerLastName;
 
-	@FindBy(name = "company")
-	private WebElement companyName;
+	//@FindBy(name = "company")
+	//private WebElement companyName;
 
-	@FindBy(name = "address1")
-	private WebElement address;
+	//@FindBy(name = "address1")
+	//private WebElement address;
 
-	@FindBy(name = "city")
-	private WebElement city;
+	//@FindBy(name = "city")
+	//private WebElement city;
 
-	@FindBy(name = "id_state")
-	private WebElement state;
+	//@FindBy(name = "id_state")
+	//private WebElement state;
 
-	@FindBy(name = "postcode")
-	private WebElement postCode;
+	//@FindBy(name = "postcode")
+	//private WebElement postCode;
 
-	@FindBy(name = "id_country")
-	private WebElement country;
+	//@FindBy(name = "id_country")
+	//private WebElement country;
 
-	@FindBy(name = "phone")
-	private WebElement phone;
+	//@FindBy(name = "phone")
+	//private WebElement phone;
 
-	@FindBy(name = "phone_mobile")
-	private WebElement mobile;
+	//@FindBy(name = "phone_mobile")
+	//private WebElement mobile;
 
-	@FindBy(name = "alias")
-	private WebElement ref;
+	//@FindBy(name = "alias")
+	//private WebElement ref;
+
 
 	@FindBy(name = "submitAccount")
 	private WebElement registerBtn;
@@ -83,14 +84,14 @@ public class AccountCreationPage extends BaseClass {
 			String pswd, 
 			String day, 
 			String month, 
-			String year,
-			String comPany, 
-			String addr, 
-			String cityString, 
-			String stateName, 
-			String zip, 
-			String countryName,
-			String mobilePhone) throws Throwable {
+			String year) {
+		//String comPany,
+		//String addr, 
+		//String cityString, 
+		//String stateName, 
+		//String zip, 
+		//String countryName,
+		//String mobilePhone) throws Throwable {
 		
 		if(gender.equalsIgnoreCase("Mr")) {
 			mr.click();
@@ -107,15 +108,15 @@ public class AccountCreationPage extends BaseClass {
 		s1.selectByValue(month);
 		Select s2 = new Select(years);
 		s2.selectByValue(year);
-		companyName.sendKeys(comPany);
-		address.sendKeys(addr);
-		city.sendKeys(cityString);
-		Select s3 = new Select(state);
-		s3.selectByVisibleText(stateName);
-		postCode.sendKeys(zip);
-		mobile.sendKeys(mobilePhone);
-		Select s4 = new Select(country);
-		s4.selectByVisibleText(countryName);
+		//companyName.sendKeys(comPany);
+		//address.sendKeys(addr);
+		//city.sendKeys(cityString);
+		//Select s3 = new Select(state);
+		//s3.selectByVisibleText(stateName);
+		//postCode.sendKeys(zip);
+		//mobile.sendKeys(mobilePhone);
+		//Select s4 = new Select(country);
+		//s4.selectByVisibleText(countryName);
 	}
 	
 	public Homepage validateRegistration() throws Throwable {

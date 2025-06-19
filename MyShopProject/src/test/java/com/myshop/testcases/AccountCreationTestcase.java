@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.junit.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -24,7 +25,7 @@ public class AccountCreationTestcase extends BaseClass{
 	
 	@Parameters("browser")
 	@BeforeMethod(groups = {"Smoke","Sanity","Regression"})
-	public void setup(String browser) {
+	public void setup(@Optional("Chrome") String browser) {
 		launchApp(browser); 
 	}
 	
@@ -33,7 +34,7 @@ public class AccountCreationTestcase extends BaseClass{
 		getDriver().quit();
 	}
 	
-	@Test(groups = "Sanity",dataProvider = "email", dataProviderClass = DataProviders.class)
+	@Test(priority = 1, groups = {"Sanity"},dataProvider = "email", dataProviderClass = DataProviders.class)
 	public void verifyCreateAccountPageTest(String email) throws Throwable {
 		LogUtility.startTestCase("verifyCreateAccountPageTest");
 		indexPage= new Indexpage();
@@ -57,16 +58,16 @@ public class AccountCreationTestcase extends BaseClass{
 				hashMapValue.get("SetPassword"),
 				hashMapValue.get("Day"),
 				hashMapValue.get("Month"),
-				hashMapValue.get("Year"),
-				hashMapValue.get("Company"),
-				hashMapValue.get("Address"),
-				hashMapValue.get("City"),
-				hashMapValue.get("State"),
-				hashMapValue.get("Zipcode"),
-				hashMapValue.get("Country"),
-				hashMapValue.get("MobilePhone"));
+				hashMapValue.get("Year"));
+		//hashMapValue.get("Company"),
+		//hashMapValue.get("Address"),
+		//hashMapValue.get("City"),
+		//hashMapValue.get("State"),
+		//hashMapValue.get("Zipcode"),
+		//hashMapValue.get("Country"),
+		//hashMapValue.get("MobilePhone"));
 		homePage=acountCreationPage.validateRegistration();
-		Assert.assertEquals("http://automationpractice.com/index.php?controller=my-account", homePage.getCurrURL());
+		Assert.assertEquals("http://www.automationpractice.pl/index.php?controller=my-account", homePage.getCurrURL());
 		LogUtility.endTestCase("createAccountTest");
 	}
 
